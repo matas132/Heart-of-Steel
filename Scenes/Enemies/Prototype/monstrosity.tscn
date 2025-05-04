@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://co4vmc47o7m3h"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Prototype/monstrosity.gd" id="1_lelyp"]
+[ext_resource type="Texture2D" uid="uid://dndemqmhvhpdh" path="res://Assets/Sprites/Enemies/SpiderThing.png" id="2_tqurk"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="3_wijwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7d4u"]
+size = Vector2(109.709, 113.163)
+
+[node name="Monstrosity" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_lelyp")
+type = 1
+enemy = 2
+max_health = 20.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -86.0
+offset_top = -46.0
+offset_right = 1012.0
+offset_bottom = 716.0
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_tqurk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1.99999)
+rotation = 1.58738
+shape = SubResource("RectangleShape2D_x7d4u")
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(2.00001, -1)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_wijwq")]
+offset_left = -41.0
+offset_top = -82.0
+offset_right = 35.0
+offset_bottom = -70.0
+
+[node name="AttackTimer" type="Timer" parent="."]

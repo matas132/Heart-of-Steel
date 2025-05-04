@@ -1,0 +1,219 @@
+[gd_scene load_steps=15 format=3 uid="uid://dyly7v61u81vx"]
+
+[ext_resource type="Script" path="res://Scenes/UI/HUD/weapon_selecor.gd" id="1_bw8jv"]
+[ext_resource type="PackedScene" uid="uid://ci332fau3bfa2" path="res://Scenes/Components/spawn_area.tscn" id="1_ty2et"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/enemy_spawner.gd" id="2_7htqk"]
+[ext_resource type="Script" path="res://CustomResources/Waves/Wave.gd" id="3_6x05u"]
+[ext_resource type="Script" path="res://CustomResources/Waves/Enemy/enemy.gd" id="4_f76g7"]
+[ext_resource type="PackedScene" uid="uid://bxxpbneh8fto8" path="res://Scenes/Components/crosshair.tscn" id="4_ux62g"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/start_game.gd" id="5_05w2g"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/spawned_enemies.gd" id="6_limbm"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/shoot.gd" id="6_wclrd"]
+
+[sub_resource type="Resource" id="Resource_874tm"]
+script = ExtResource("4_f76g7")
+type = 0
+weight = 1
+
+[sub_resource type="Resource" id="Resource_ruuoi"]
+script = ExtResource("3_6x05u")
+wave_time = 9.0
+enemy_spawn_time = 4.0
+enemies = Array[ExtResource("4_f76g7")]([SubResource("Resource_874tm")])
+
+[sub_resource type="Resource" id="Resource_jwomw"]
+script = ExtResource("4_f76g7")
+type = 0
+weight = 1
+
+[sub_resource type="Resource" id="Resource_lhftr"]
+script = ExtResource("4_f76g7")
+type = 1
+weight = 1
+
+[sub_resource type="Resource" id="Resource_8jku3"]
+script = ExtResource("3_6x05u")
+wave_time = 20.0
+enemy_spawn_time = 3.0
+enemies = Array[ExtResource("4_f76g7")]([SubResource("Resource_jwomw"), SubResource("Resource_lhftr")])
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.351563, 0.351563, 0.351563, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="WeaponSelecor" type="MarginContainer" parent="MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 475)
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 475.0
+script = ExtResource("1_bw8jv")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Control/WeaponSelecor"]
+layout_mode = 2
+color = Color(0.728822, 0.728822, 0.728822, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Control/WeaponSelecor"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="SelectMachineGun" type="Button" parent="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer"]
+layout_mode = 2
+text = "Machine gun"
+
+[node name="SelectLaserShotgun" type="Button" parent="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer"]
+layout_mode = 2
+text = "Laser shotgun"
+
+[node name="PrecisionRocket" type="Button" parent="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer"]
+layout_mode = 2
+text = "Precision Rocket"
+
+[node name="Pilot" type="MarginContainer" parent="MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(200, 215)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -215.0
+offset_right = 200.0
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Control/Pilot"]
+layout_mode = 2
+color = Color(0.994033, 0.691528, 0.646255, 1)
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(800, 90)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Control2/MarginContainer2"]
+layout_mode = 2
+color = Color(0.333333, 1, 0.294118, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -250.0
+offset_right = 800.0
+offset_bottom = 250.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Control3"]
+custom_minimum_size = Vector2(250, 500)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/Control3/MarginContainer"]
+layout_mode = 2
+
+[node name="SpawnAreaForLongGodot" parent="." instance=ExtResource("1_ty2et")]
+
+[node name="LeftTop" parent="SpawnAreaForLongGodot" index="0"]
+position = Vector2(318, 405)
+
+[node name="RightBottom" parent="SpawnAreaForLongGodot" index="1"]
+position = Vector2(862, 522)
+
+[node name="SpawnAreaForMonstrosity" parent="." instance=ExtResource("1_ty2et")]
+
+[node name="LeftTop" parent="SpawnAreaForMonstrosity" index="0"]
+position = Vector2(293, 155)
+
+[node name="RightBottom" parent="SpawnAreaForMonstrosity" index="1"]
+position = Vector2(872, 334)
+
+[node name="EnemySpawner" type="Node" parent="."]
+script = ExtResource("2_7htqk")
+waves = Array[ExtResource("3_6x05u")]([SubResource("Resource_ruuoi"), SubResource("Resource_8jku3")])
+
+[node name="EnemySpawn" type="Timer" parent="EnemySpawner"]
+
+[node name="WaveTimer" type="Timer" parent="EnemySpawner"]
+one_shot = true
+
+[node name="Crosshair" parent="." instance=ExtResource("4_ux62g")]
+position = Vector2(256, 161)
+
+[node name="Shoot" type="Button" parent="."]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 644.0
+offset_right = 926.0
+offset_bottom = 691.0
+text = "Shoot"
+script = ExtResource("6_wclrd")
+
+[node name="StartGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 680.0
+offset_right = 439.0
+offset_bottom = 688.0
+text = "Start game"
+script = ExtResource("5_05w2g")
+
+[node name="SpawnedEnemies" type="Node" parent="."]
+script = ExtResource("6_limbm")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer/SelectMachineGun" to="MarginContainer/HBoxContainer/Control/WeaponSelecor" method="_on_select_machine_gun_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer/SelectLaserShotgun" to="MarginContainer/HBoxContainer/Control/WeaponSelecor" method="_on_select_laser_shotgun_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Control/WeaponSelecor/VBoxContainer/PrecisionRocket" to="MarginContainer/HBoxContainer/Control/WeaponSelecor" method="_on_precision_rocket_pressed"]
+[connection signal="timeout" from="EnemySpawner/EnemySpawn" to="EnemySpawner" method="_on_enemy_spawn_timeout"]
+[connection signal="timeout" from="EnemySpawner/WaveTimer" to="EnemySpawner" method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="Shoot" to="Shoot" method="_on_pressed"]
+[connection signal="pressed" from="StartGame" to="StartGame" method="_on_pressed"]
+
+[editable path="SpawnAreaForLongGodot"]
+[editable path="SpawnAreaForMonstrosity"]

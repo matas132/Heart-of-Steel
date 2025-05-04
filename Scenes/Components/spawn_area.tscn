@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci332fau3bfa2"]
+
+[ext_resource type="Script" path="res://Scenes/Components/spawn_area.gd" id="1_1yejp"]
+
+[node name="SpawnArea" type="Node"]
+script = ExtResource("1_1yejp")
+
+[node name="LeftTop" type="Marker2D" parent="."]
+
+[node name="RightBottom" type="Marker2D" parent="."]
+position = Vector2(411, 244)

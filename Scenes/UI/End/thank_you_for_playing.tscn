@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://da4lnbtpqm3rm"]
+
+[ext_resource type="Texture2D" uid="uid://dd5uv4dirxtlu" path="res://Assets/Sprites/TITLE_SCREEN/ending hud happy.png" id="1_5yewo"]
+[ext_resource type="Script" path="res://Scenes/UI/End/thank_you_for_playing.gd" id="1_6nnac"]
+[ext_resource type="Script" path="res://Scenes/UI/End/button.gd" id="2_fvp3d"]
+
+[node name="ThankYouForPlaying" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6nnac")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="White" type="ColorRect" parent="CanvasLayer"]
+offset_left = -160.0
+offset_top = -88.0
+offset_right = 1498.0
+offset_bottom = 928.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 190.0
+offset_top = 2.0
+offset_right = 1450.0
+offset_bottom = 1002.0
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("1_5yewo")
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 51.0
+offset_top = 536.0
+offset_right = 113.0
+offset_bottom = 567.0
+text = "To title"
+script = ExtResource("2_fvp3d")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceom6lcmdv6kk"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Prototype/long_godot_enemy.gd" id="1_o7ukh"]
+[ext_resource type="Texture2D" uid="uid://b5y6pyihgs2fg" path="res://icon.svg" id="2_7vxs5"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="3_id6bx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m3pv"]
+size = Vector2(34, 106)
+
+[node name="LongGodotEnemy" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_o7ukh")
+enemy = 1
+max_health = 15.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -17.0
+offset_top = -53.0
+offset_right = 17.0
+offset_bottom = 53.0
+texture = ExtResource("2_7vxs5")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4m3pv")
+
+[node name="Center" type="Marker2D" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_id6bx")]
+offset_left = -31.0
+offset_top = -77.0
+offset_right = 45.0
+offset_bottom = -65.0
+
+[node name="AttackTimer" type="Timer" parent="."]

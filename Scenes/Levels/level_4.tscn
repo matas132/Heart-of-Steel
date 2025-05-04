@@ -1,0 +1,606 @@
+[gd_scene load_steps=42 format=3 uid="uid://c5k3srff3r3m0"]
+
+[ext_resource type="Script" path="res://Scenes/UI/HUD/hud.gd" id="1_utnl3"]
+[ext_resource type="Script" path="res://Scenes/Levels/game_end.gd" id="2_w20ab"]
+[ext_resource type="Texture2D" uid="uid://cac1wkarl4g7q" path="res://Assets/Sprites/HUD/HUDElements/Desert_Background.png" id="2_x80wn"]
+[ext_resource type="Texture2D" uid="uid://c5jqkgjd688tm" path="res://Assets/Backgrounds/BgBottom.png" id="3_edpww"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/spawned_enemies.gd" id="4_s7o5u"]
+[ext_resource type="Texture2D" uid="uid://dvwxsnhs80igk" path="res://Assets/Sprites/HUD/HUDElements/MainHud/hud_left_side.png" id="5_d3o2h"]
+[ext_resource type="Texture2D" uid="uid://d4id6nntyv85e" path="res://Assets/Sprites/HUD/HUDElements/MainHud/hud_no_left_side.png" id="6_2jtfk"]
+[ext_resource type="Texture2D" uid="uid://dp5fxs1ukcwp5" path="res://Assets/Sprites/HUD/HUDElements/MainHud/combat_hud_left_side.png" id="7_ngoin"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/emotion_display.gd" id="7_xhr4c"]
+[ext_resource type="Texture2D" uid="uid://cu1f1wnsncmhp" path="res://Assets/Sprites/HUD/Player/Calm.png" id="8_fna1t"]
+[ext_resource type="Texture2D" uid="uid://c0maxsa8i0wuv" path="res://Assets/Sprites/HUD/HUDElements/MainHud/combat_hud.png" id="8_r7s70"]
+[ext_resource type="Script" path="res://Scenes/Levels/combat_texture.gd" id="9_35b8m"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/weapons.gd" id="9_jo7j4"]
+[ext_resource type="PackedScene" uid="uid://dx36la2n8ki1a" path="res://Scenes/UI/HUD/weapon_display.tscn" id="10_o2ogw"]
+[ext_resource type="Texture2D" uid="uid://biwrkf5n8u4yb" path="res://Assets/Sprites/HUD/HUDElements/Machine_Gun.png" id="11_sxe4l"]
+[ext_resource type="Texture2D" uid="uid://ce41mda204jj6" path="res://Assets/Sprites/HUD/HUDElements/Laser_Shotgun.png" id="12_gves8"]
+[ext_resource type="Texture2D" uid="uid://01qia1pmvy3s" path="res://Assets/Sprites/HUD/HUDElements/Precision_Rocket_Launcher.png" id="13_g3xf4"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/progress_bar.gd" id="14_7bb76"]
+[ext_resource type="PackedScene" uid="uid://bxxpbneh8fto8" path="res://Scenes/Components/crosshair.tscn" id="15_cf0ql"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/shoot.gd" id="16_uxcky"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/start_game.gd" id="17_ekj6w"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/shake_screen.gd" id="18_3bbno"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/shake_hud.gd" id="19_xpctu"]
+[ext_resource type="PackedScene" uid="uid://ci332fau3bfa2" path="res://Scenes/Components/spawn_area.tscn" id="20_hgknr"]
+[ext_resource type="Script" path="res://Scenes/Levels/explode.gd" id="20_jjomc"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/enemy_spawner.gd" id="21_aoiqv"]
+[ext_resource type="Script" path="res://CustomResources/Waves/Wave.gd" id="22_4e32w"]
+[ext_resource type="Script" path="res://CustomResources/Waves/Enemy/enemy.gd" id="24_5uuws"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/vfx_handler.gd" id="26_6r2cc"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD/reloader.gd" id="27_mx1gt"]
+[ext_resource type="PackedScene" uid="uid://0q0sy6suerbq" path="res://Scenes/UI/Minigames/speedometer_minigame.tscn" id="28_aka7f"]
+[ext_resource type="PackedScene" uid="uid://c6uhxulyhvwww" path="res://Scenes/UI/Minigames/laser_shotgun_minigame_dial.tscn" id="29_rthmn"]
+[ext_resource type="PackedScene" uid="uid://dc8pudg47asul" path="res://Scenes/UI/Minigames/precision_rocket_minigame_ball_fall_down.tscn" id="30_dtokh"]
+[ext_resource type="Texture2D" uid="uid://bo5fd1xnei8c7" path="res://Assets/Sprites/HUD/HUDElements/Omega button.png" id="30_pec8h"]
+[ext_resource type="Script" path="res://Scenes/Levels/pause_button.gd" id="31_dfbjy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2sfg"]
+bg_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxaw0"]
+bg_color = Color(0.741176, 0.847059, 0.223529, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gya3v"]
+
+[sub_resource type="Resource" id="Resource_5f4tk"]
+script = ExtResource("24_5uuws")
+enemy = 7
+weight = 1
+
+[sub_resource type="Resource" id="Resource_x4le5"]
+script = ExtResource("22_4e32w")
+wave_time = 1e+08
+enemy_spawn_time = 1e+07
+enemies = Array[ExtResource("24_5uuws")]([SubResource("Resource_5f4tk")])
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0drj"]
+
+[node name="Level4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_utnl3")
+
+[node name="GameEnd" type="Node" parent="."]
+script = ExtResource("2_w20ab")
+
+[node name="DesertBackground" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x80wn")
+expand_mode = 1
+
+[node name="BgUpper" type="TextureRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -49.0
+offset_top = -59.0
+offset_right = 1777.0
+offset_bottom = 374.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_x80wn")
+
+[node name="BgLower" type="TextureRect" parent="."]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 35.0
+offset_top = 263.0
+offset_right = 1861.0
+offset_bottom = 881.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_edpww")
+
+[node name="SpawnedEnemies" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("4_s7o5u")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" parent="CanvasLayer2" instance=ExtResource("15_cf0ql")]
+position = Vector2(615, 539)
+
+[node name="LeftSide" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_d3o2h")
+expand_mode = 1
+
+[node name="LeftSideCombat" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ngoin")
+expand_mode = 1
+script = ExtResource("9_35b8m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_2jtfk")
+expand_mode = 1
+
+[node name="CombatHud" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_r7s70")
+expand_mode = 1
+script = ExtResource("9_35b8m")
+
+[node name="Omega" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_pec8h")
+expand_mode = 1
+
+[node name="EmotionDisplay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("7_xhr4c")
+
+[node name="Emotion" type="TextureRect" parent="CanvasLayer/EmotionDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_fna1t")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="WeaponSelecor" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(280, 310)
+layout_mode = 1
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 341.0
+offset_bottom = 357.0
+scale = Vector2(0.95, 0.95)
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor"]
+visible = false
+layout_mode = 2
+color = Color(0.728822, 0.728822, 0.728822, 1)
+
+[node name="Weapons" type="VBoxContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+script = ExtResource("9_jo7j4")
+
+[node name="MachineGun" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons" instance=ExtResource("10_o2ogw")]
+layout_mode = 2
+weapon_type = 1
+max_ammo = 15.0
+
+[node name="AmmoBar" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/MachineGun" index="0"]
+texture_under = ExtResource("11_sxe4l")
+texture_progress = ExtResource("11_sxe4l")
+
+[node name="LaserShotgun" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons" instance=ExtResource("10_o2ogw")]
+layout_mode = 2
+weapon_type = 2
+max_ammo = 10.0
+
+[node name="AmmoBar" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/LaserShotgun" index="0"]
+texture_under = ExtResource("12_gves8")
+texture_progress = ExtResource("12_gves8")
+
+[node name="PrecisionRocket" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons" instance=ExtResource("10_o2ogw")]
+layout_mode = 2
+weapon_type = 3
+max_ammo = 1.0
+
+[node name="AmmoBar" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/PrecisionRocket" index="0"]
+texture_under = ExtResource("13_g3xf4")
+texture_progress = ExtResource("13_g3xf4")
+
+[node name="Pilot" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(256, 252)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -278.0
+offset_right = 286.0
+offset_bottom = -26.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/Pilot"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(460, 43)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 628.0
+offset_right = 496.0
+offset_bottom = 671.0
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/HBoxContainer/Control2/MarginContainer2"]
+z_index = -2
+custom_minimum_size = Vector2(0, 43)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y2sfg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dxaw0")
+value = 100.0
+show_percentage = false
+script = ExtResource("14_7bb76")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(645, 560)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = -331.0
+offset_right = 742.0
+offset_bottom = 229.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/HBoxContainer/Control2/MarginContainer"]
+visible = false
+modulate = Color(1, 0.658824, 0, 0.439216)
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Control3" type="Control" parent="CanvasLayer/MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/HBoxContainer/Control3"]
+custom_minimum_size = Vector2(290, 635)
+layout_mode = 0
+offset_left = -45.0
+offset_top = 44.0
+offset_right = 205.0
+offset_bottom = 544.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control3/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Shoot" type="Button" parent="CanvasLayer"]
+z_index = 1
+offset_left = 842.0
+offset_top = 599.0
+offset_right = 931.0
+offset_bottom = 683.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gya3v")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gya3v")
+script = ExtResource("16_uxcky")
+
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+visible = false
+z_index = 1
+offset_left = 549.0
+offset_top = 597.0
+offset_right = 680.0
+offset_bottom = 634.0
+focus_mode = 0
+text = "Start game"
+script = ExtResource("17_ekj6w")
+
+[node name="ShakeScreen" type="Button" parent="CanvasLayer"]
+visible = false
+z_index = 1
+offset_left = 1395.0
+offset_top = 600.0
+offset_right = 1512.0
+offset_bottom = 631.0
+text = "Shake camera"
+script = ExtResource("18_3bbno")
+
+[node name="ShakeHUD" type="Button" parent="CanvasLayer"]
+visible = false
+z_index = 1
+offset_left = 1399.0
+offset_top = 661.0
+offset_right = 1494.0
+offset_bottom = 692.0
+text = "Shake HUD"
+script = ExtResource("19_xpctu")
+
+[node name="Explode" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 979.0
+offset_top = 333.0
+offset_right = 1092.0
+offset_bottom = 405.0
+text = "Explode"
+script = ExtResource("20_jjomc")
+
+[node name="SpawnAreas" type="Node" parent="CanvasLayer"]
+
+[node name="SpawnAreaForLongGodot" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForLongGodot" index="0"]
+visible = false
+position = Vector2(348, 524)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForLongGodot" index="1"]
+visible = false
+position = Vector2(862, 522)
+
+[node name="SpawnAreaForMonstrosity" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForMonstrosity" index="0"]
+visible = false
+position = Vector2(411, 412)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForMonstrosity" index="1"]
+visible = false
+position = Vector2(833, 480)
+
+[node name="SpawnAreaForAtlasClassMonsterSketch" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForAtlasClassMonsterSketch" index="0"]
+visible = false
+position = Vector2(427, 219)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForAtlasClassMonsterSketch" index="1"]
+visible = false
+position = Vector2(745, 316)
+
+[node name="SpawnAreaForAnt" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForAnt" index="0"]
+visible = false
+position = Vector2(450, 425)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForAnt" index="1"]
+visible = false
+position = Vector2(803, 486)
+
+[node name="SpawnAreaForCentipede" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForCentipede" index="0"]
+visible = false
+position = Vector2(445, 387)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForCentipede" index="1"]
+visible = false
+position = Vector2(807, 485)
+
+[node name="SpawnAreaForMantis" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForMantis" index="0"]
+visible = false
+position = Vector2(471, 411)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForMantis" index="1"]
+visible = false
+position = Vector2(753, 524)
+
+[node name="SpawnAreaForSpider" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForSpider" index="0"]
+visible = false
+position = Vector2(393, 448)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForSpider" index="1"]
+visible = false
+position = Vector2(863, 563)
+
+[node name="SpawnAreaForZombie" parent="CanvasLayer/SpawnAreas" instance=ExtResource("20_hgknr")]
+
+[node name="LeftTop" parent="CanvasLayer/SpawnAreas/SpawnAreaForZombie" index="0"]
+visible = false
+position = Vector2(399, 519)
+
+[node name="RightBottom" parent="CanvasLayer/SpawnAreas/SpawnAreaForZombie" index="1"]
+visible = false
+position = Vector2(826, 560)
+
+[node name="EnemySpawner" type="Node" parent="CanvasLayer"]
+script = ExtResource("21_aoiqv")
+waves = Array[ExtResource("22_4e32w")]([SubResource("Resource_x4le5")])
+
+[node name="EnemySpawn" type="Timer" parent="CanvasLayer/EnemySpawner"]
+
+[node name="WaveTimer" type="Timer" parent="CanvasLayer/EnemySpawner"]
+one_shot = true
+
+[node name="VFXHandler" type="Node" parent="CanvasLayer"]
+script = ExtResource("26_6r2cc")
+
+[node name="ReloaderDebug" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_mx1gt")
+
+[node name="ReloadMachineGun" type="Button" parent="CanvasLayer/ReloaderDebug"]
+visible = false
+layout_mode = 0
+offset_left = 1002.0
+offset_top = 79.0
+offset_right = 1167.0
+offset_bottom = 110.0
+text = "Reload machine gun"
+
+[node name="ReloadLaserShotgun" type="Button" parent="CanvasLayer/ReloaderDebug"]
+visible = false
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 125.0
+offset_right = 1172.0
+offset_bottom = 156.0
+text = "Reload laser shotgun"
+
+[node name="ReloadPrecisionRocket" type="Button" parent="CanvasLayer/ReloaderDebug"]
+layout_mode = 0
+offset_left = 1001.0
+offset_top = 180.0
+offset_right = 1191.0
+offset_bottom = 211.0
+text = "Reload precision rocket"
+
+[node name="Speedometer_minigame" parent="CanvasLayer" instance=ExtResource("28_aka7f")]
+offset_top = 144.0
+offset_bottom = 144.0
+scale = Vector2(0.69, 0.69)
+
+[node name="LaserShotgunMinigame" parent="CanvasLayer" instance=ExtResource("29_rthmn")]
+offset_left = 1088.0
+offset_top = 277.0
+offset_right = -73.0
+offset_bottom = -227.0
+charge_rate = 6.0
+
+[node name="TextureProgressBar" parent="CanvasLayer/LaserShotgunMinigame" index="1"]
+z_index = -1
+offset_left = 102.0
+offset_top = 44.0
+offset_right = 168.0
+offset_bottom = 226.0
+
+[node name="VScrollBar" parent="CanvasLayer/LaserShotgunMinigame" index="3"]
+offset_left = -20.8956
+offset_top = -1.49252
+offset_right = 86.1044
+offset_bottom = 265.507
+
+[node name="PrecisionRocketMinigame" parent="CanvasLayer" instance=ExtResource("30_dtokh")]
+offset_left = 1012.0
+offset_top = 485.0
+offset_right = 154.0
+offset_bottom = 187.0
+scale = Vector2(0.43, 0.43)
+
+[node name="Target" parent="CanvasLayer/PrecisionRocketMinigame" index="3"]
+offset_left = 202.326
+offset_top = 62.7907
+offset_right = 230.326
+offset_bottom = 86.7907
+scale = Vector2(1.34, 1.34)
+pivot_offset = Vector2(14, 146)
+
+[node name="Button" parent="CanvasLayer/PrecisionRocketMinigame" index="5"]
+offset_left = 140.0
+offset_right = 281.0
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+z_index = 1
+offset_left = 571.0
+offset_top = 591.0
+offset_right = 647.0
+offset_bottom = 626.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_l0drj")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l0drj")
+script = ExtResource("31_dfbjy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[connection signal="pressed" from="CanvasLayer/Shoot" to="CanvasLayer/Shoot" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartGame" to="CanvasLayer/StartGame" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShakeScreen" to="CanvasLayer/ShakeScreen" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShakeHUD" to="CanvasLayer/ShakeHUD" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Explode" to="CanvasLayer/Explode" method="_on_pressed"]
+[connection signal="timeout" from="CanvasLayer/EnemySpawner/EnemySpawn" to="CanvasLayer/EnemySpawner" method="_on_enemy_spawn_timeout"]
+[connection signal="timeout" from="CanvasLayer/EnemySpawner/WaveTimer" to="CanvasLayer/EnemySpawner" method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/ReloaderDebug/ReloadMachineGun" to="CanvasLayer/ReloaderDebug" method="_on_reload_machine_gun_pressed"]
+[connection signal="pressed" from="CanvasLayer/ReloaderDebug/ReloadLaserShotgun" to="CanvasLayer/ReloaderDebug" method="_on_reload_laser_shotgun_pressed"]
+[connection signal="pressed" from="CanvasLayer/ReloaderDebug/ReloadPrecisionRocket" to="CanvasLayer/ReloaderDebug" method="_on_reload_precision_rocket_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseButton" method="_on_pressed"]
+
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/MachineGun"]
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/LaserShotgun"]
+[editable path="CanvasLayer/MarginContainer/HBoxContainer/Control/WeaponSelecor/Weapons/PrecisionRocket"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForLongGodot"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForMonstrosity"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForAtlasClassMonsterSketch"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForAnt"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForCentipede"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForMantis"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForSpider"]
+[editable path="CanvasLayer/SpawnAreas/SpawnAreaForZombie"]
+[editable path="CanvasLayer/LaserShotgunMinigame"]
+[editable path="CanvasLayer/PrecisionRocketMinigame"]

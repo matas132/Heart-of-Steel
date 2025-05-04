@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjjl32q2dor8a"]
+
+[ext_resource type="Script" path="res://Scenes/TutorialSystem/tutorial.gd" id="1_ueqhv"]
+[ext_resource type="Texture2D" uid="uid://ciqk2q0oo6vtd" path="res://Assets/Sprites/Tutorial/1.png" id="2_8s0io"]
+[ext_resource type="Texture2D" uid="uid://b3ylxm8736s44" path="res://Assets/Sprites/Tutorial/2.png" id="3_8wpe5"]
+[ext_resource type="Texture2D" uid="uid://bhjwak8atvvhc" path="res://Assets/Sprites/Tutorial/3.png" id="4_6dheb"]
+[ext_resource type="Texture2D" uid="uid://dou3ciby6h32r" path="res://Assets/Sprites/Tutorial/4.png" id="5_kc4p1"]
+[ext_resource type="Texture2D" uid="uid://xduh0lrj8pv5" path="res://Assets/Sprites/Tutorial/5.png" id="6_b72nj"]
+[ext_resource type="Texture2D" uid="uid://ecjuu35tukg7" path="res://Assets/Sprites/Tutorial/6.png" id="7_1anj1"]
+[ext_resource type="Texture2D" uid="uid://idvigerdwl2f" path="res://Assets/Sprites/Tutorial/7.png" id="8_rc3s3"]
+
+[sub_resource type="Gradient" id="Gradient_b1cu2"]
+colors = PackedColorArray(0, 0, 0, 1, 1.8049e-08, 0.209841, 0.0867807, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3sh55"]
+gradient = SubResource("Gradient_b1cu2")
+fill_to = Vector2(0, 1)
+
+[node name="Tutorial" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ueqhv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_3sh55")
+
+[node name="1" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8s0io")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8wpe5")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_6dheb")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kc4p1")
+expand_mode = 1
+
+[node name="5" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_b72nj")
+expand_mode = 1
+
+[node name="6" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_1anj1")
+expand_mode = 1
+
+[node name="7" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_rc3s3")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 581.0
+offset_top = 11.0
+offset_right = 694.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 30
+text = "Tutorial"

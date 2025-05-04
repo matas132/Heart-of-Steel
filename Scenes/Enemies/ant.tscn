@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3tbvj2mywu3h"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/base_enemy.gd" id="1_7lnov"]
+[ext_resource type="Texture2D" uid="uid://dfkehvlrhqp6k" path="res://Assets/Sprites/Enemies/NonPrototype/Ant.png" id="2_pxugq"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="3_8wdl3"]
+
+[sub_resource type="Animation" id="Animation_ci0ai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fqkm0"]
+resource_name = "a"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.56667, 3.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.02), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvvw2"]
+_data = {
+"RESET": SubResource("Animation_ci0ai"),
+"a": SubResource("Animation_fqkm0")
+}
+
+[node name="Ant" type="Area2D" groups=["Enemy"]]
+y_sort_enabled = true
+scale = Vector2(0.67, 0.67)
+script = ExtResource("1_7lnov")
+type = 1
+enemy = 4
+max_health = 55.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-92.985, -122.388)
+polygon = PackedVector2Array(47.7612, -43.2836, 119.403, -31.3433, 162.687, -17.9104, 156.716, -83.5821, 205.97, -88.0597, 213.433, -7.46268, 252.239, 2.98508, 291.045, 76.1194, 258.209, 192.537, 222.388, 191.045, 253.731, 92.5373, 237.313, 61.194, 173.134, 140.299, 147.761, 125.373, 140.299, 214.925, 98.5075, 225.373, 104.478, 97.0149, 44.7761, 150.746, 53.7313, 91.0448, 2.98508, 58.209, -61.194, 141.791, -80.597, 134.328, -8.95522, 29.8507, -25.3731, 10.4478)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(7.01499, 114.925)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = -195.522
+offset_top = -343.284
+offset_right = 208.478
+offset_bottom = 13.7164
+texture = ExtResource("2_pxugq")
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(101.493, -167.164)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_8wdl3")]
+offset_left = 27.0
+offset_top = -248.0
+offset_right = 155.0
+offset_bottom = -232.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dvvw2")
+}
+autoplay = "a"

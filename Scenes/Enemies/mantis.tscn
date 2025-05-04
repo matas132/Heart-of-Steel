@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://ithayqow56xg"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/base_enemy.gd" id="1_lm6ee"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="2_avvkt"]
+[ext_resource type="Texture2D" uid="uid://ccoild2uee66q" path="res://Assets/Sprites/Enemies/NonPrototype/Mantis.png" id="2_vc3vi"]
+
+[sub_resource type="Animation" id="Animation_ctvbb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mwnib"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.02), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr6jw"]
+_data = {
+"RESET": SubResource("Animation_ctvbb"),
+"new_animation": SubResource("Animation_mwnib")
+}
+
+[node name="Mantis" type="Area2D" groups=["Enemy"]]
+y_sort_enabled = true
+scale = Vector2(0.67, 0.67)
+script = ExtResource("1_lm6ee")
+type = 2
+enemy = 6
+max_health = 400.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(18.9552, 81.6418)
+polygon = PackedVector2Array(-44.7761, -471.642, 34.3284, -505.97, 107.463, -474.627, 108.955, -456.716, 95.5224, -456.716, 77.6119, -419.403, 95.5224, -408.955, 125.373, -291.045, 188.06, -383.582, 210.448, -382.09, 240.298, -343.284, 259.701, -243.284, 238.806, -222.388, 186.567, -338.806, 158.209, -271.642, 202.985, -244.776, 237.313, -156.716, 247.761, -70.1493, 234.328, -71.6418, 219.403, -162.687, 197.015, -214.925, 125.373, -17.9104, 110.448, -19.403, 149.254, -182.09, 119.403, -174.627, 67.1642, -192.537, 5.97015, -97.0149, -74.6269, -74.6269, -102.985, -82.0895, -94.0298, -20.8955, -105.97, -14.9254, -122.388, -97.0149, -177.612, -147.761, -168.657, -159.701, -141.791, -144.776, -140.299, -210.448, -152.239, -210.448, -204.478, -126.866, -211.94, -83.5821, -226.866, -82.0895, -213.433, -153.731, -150.746, -264.179, -128.358, -270.149, -80.597, -241.791, -132.836, -337.313, -202.985, -237.313, -231.343, -267.164, -152.239, -380.597, -128.358, -383.582, -71.6418, -300, -47.7612, -395.522, -14.9254, -422.388, -26.8657, -455.224, -43.2836, -452.239)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(18.9552, 81.6418)
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = -237.313
+offset_top = -538.806
+offset_right = 268.687
+offset_bottom = -2.80597
+texture = ExtResource("2_vc3vi")
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(52.2388, -413.433)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_avvkt")]
+offset_left = -21.0
+offset_top = -479.0
+offset_right = 130.0
+offset_bottom = -463.0
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vr6jw")
+}
+autoplay = "new_animation"

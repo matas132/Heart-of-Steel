@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxxpbneh8fto8"]
+
+[ext_resource type="Script" path="res://Scenes/Components/crosshair.gd" id="1_mvrds"]
+[ext_resource type="Texture2D" uid="uid://diev7ugc4yqtl" path="res://Assets/Sprites/HUD/HUDElements/Cursor.png" id="2_fe2ms"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4lap"]
+radius = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o0l88"]
+radius = 1.99998
+height = 65.9802
+
+[node name="Crosshair" type="Area2D"]
+z_index = 2
+script = ExtResource("1_mvrds")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -24.0
+offset_top = -28.0
+offset_right = 26.0
+offset_bottom = 28.0
+texture = ExtResource("2_fe2ms")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s4lap")
+
+[node name="ChangeTargetTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="anger_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="ShakeTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.2
+
+[node name="ShotgunLaserCollision" type="CollisionShape2D" parent="."]
+rotation = 1.57556
+shape = SubResource("CapsuleShape2D_o0l88")
+
+[connection signal="timeout" from="ChangeTargetTimer" to="." method="_on_change_target_timer_timeout"]
+[connection signal="timeout" from="anger_timer" to="." method="_on_anger_timer_timeout"]
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]

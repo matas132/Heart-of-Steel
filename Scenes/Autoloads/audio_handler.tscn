@@ -1,0 +1,273 @@
+[gd_scene load_steps=39 format=3 uid="uid://cgbh07inosss0"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/audio_handler.gd" id="1_1jl8o"]
+[ext_resource type="Script" path="res://Scenes/Audio/audio_events.gd" id="2_thvkr"]
+[ext_resource type="Script" path="res://Scenes/Audio/linear_sound.gd" id="3_7sb2v"]
+[ext_resource type="AudioStream" uid="uid://dpifvkkg7hflu" path="res://Assets/Audio/SoundEffects/UI/ui_choose.mp3" id="3_o75qf"]
+[ext_resource type="Script" path="res://Scenes/Audio/sound_randomizer.gd" id="4_v7fpd"]
+[ext_resource type="AudioStream" uid="uid://vdhlexjixax0" path="res://Assets/Audio/SoundEffects/UI/ui_confirm.mp3" id="5_y811c"]
+[ext_resource type="AudioStream" uid="uid://cgoegx1e58jq6" path="res://Assets/Audio/Music/opening_01.mp3" id="6_1m5fh"]
+[ext_resource type="AudioStream" uid="uid://dvbni2ly2kmdt" path="res://Assets/Audio/Music/gameplay_01.mp3" id="7_ixr1b"]
+[ext_resource type="AudioStream" uid="uid://dke4fxwq6wig2" path="res://Assets/Audio/Music/opening_climax.mp3" id="8_d7tju"]
+[ext_resource type="AudioStream" uid="uid://31dvfca8a6lm" path="res://Assets/Audio/Music/title.mp3" id="8_qlu22"]
+[ext_resource type="AudioStream" uid="uid://db0j7cux37n10" path="res://Assets/Audio/Music/opening_intro.mp3" id="9_4bltd"]
+[ext_resource type="AudioStream" uid="uid://bv06642yai3so" path="res://Assets/Audio/Music/gameplay_combat.mp3" id="10_i3nyg"]
+[ext_resource type="AudioStream" uid="uid://bd22k3mqo6na1" path="res://Assets/Audio/Music/gameplay_dialog.mp3" id="11_ldk2n"]
+[ext_resource type="AudioStream" uid="uid://d300fuoootyi5" path="res://Assets/Audio/SoundEffects/WeaponFire/MinigunFire/minigun_fire_01.mp3" id="12_drirt"]
+[ext_resource type="AudioStream" uid="uid://b3kxubshygomw" path="res://Assets/Audio/SoundEffects/WeaponFire/MinigunFire/minigun_fire_02.mp3" id="13_byjgl"]
+[ext_resource type="AudioStream" uid="uid://bpdyx21te7dg4" path="res://Assets/Audio/SoundEffects/WeaponFire/MinigunFire/minigun_fire_03.mp3" id="14_7c1up"]
+[ext_resource type="AudioStream" uid="uid://ccensyvinmpk8" path="res://Assets/Audio/SoundEffects/WeaponFire/MinigunFire/minigun_fire_04.mp3" id="15_mbs0n"]
+[ext_resource type="AudioStream" uid="uid://dcutqab86vhrn" path="res://Assets/Audio/SoundEffects/WeaponFire/MinigunFire/minigun_fire_05.mp3" id="16_ept00"]
+[ext_resource type="AudioStream" uid="uid://c2k3ceoxf33b" path="res://Assets/Audio/SoundEffects/WeaponFire/ShotgunFire/shotgun_fire_01.mp3" id="18_icnnp"]
+[ext_resource type="AudioStream" uid="uid://sekkilheuqb1" path="res://Assets/Audio/SoundEffects/WeaponFire/ShotgunFire/shotgun_fire_02.mp3" id="19_hjx2e"]
+[ext_resource type="AudioStream" uid="uid://ckw24t2x61rql" path="res://Assets/Audio/SoundEffects/WeaponFire/ShotgunFire/shotgun_fire_03.mp3" id="20_jw2bh"]
+[ext_resource type="AudioStream" uid="uid://dfut8cc75uohg" path="res://Assets/Audio/SoundEffects/WeaponFire/ShotgunFire/shotgun_fire_04.mp3" id="21_6lpas"]
+[ext_resource type="AudioStream" uid="uid://cgxtm5uir4u5q" path="res://Assets/Audio/SoundEffects/WeaponFire/ShotgunFire/shotgun_fire_05.mp3" id="22_ea5c3"]
+[ext_resource type="AudioStream" uid="uid://brqwfmrcfp2k8" path="res://Assets/Audio/SoundEffects/WeaponFire/RocketFire/rocket_fire.mp3" id="23_68lqm"]
+[ext_resource type="AudioStream" uid="uid://dmglot8l2sqmf" path="res://Assets/Audio/SoundEffects/WeaponSelect/weapon_select_01.mp3" id="23_83ubl"]
+[ext_resource type="AudioStream" uid="uid://csmx4ietpdhor" path="res://Assets/Audio/SoundEffects/WeaponSelect/weapon_select_02.mp3" id="24_jhfa5"]
+[ext_resource type="AudioStream" uid="uid://b21yw2buaps2m" path="res://Assets/Audio/SoundEffects/WeaponFire/no_ammo_fire.mp3" id="24_n7jhm"]
+[ext_resource type="AudioStream" uid="uid://ubfl1404em34" path="res://Assets/Audio/SoundEffects/WeaponSelect/weapon_select_03.mp3" id="25_ks54u"]
+[ext_resource type="AudioStream" uid="uid://ymmbg0nrf2jv" path="res://Assets/Audio/SoundEffects/Reload/MinigunReload/minigun_reload_failure.mp3" id="25_nt0sw"]
+[ext_resource type="AudioStream" uid="uid://dphqmi2gcg6b" path="res://Assets/Audio/SoundEffects/Reload/MinigunReload/minigun_reload_success.mp3" id="26_q4eyf"]
+[ext_resource type="AudioStream" uid="uid://c1oxw3rtgrjp2" path="res://Assets/Audio/SoundEffects/Reload/ShotgunReload/shotgun_reload_grab.mp3" id="27_223fo"]
+[ext_resource type="AudioStream" uid="uid://b60s30qbir2b" path="res://Assets/Audio/SoundEffects/Reload/ShotgunReload/shotgun_reload_engage.mp3" id="28_vfoss"]
+[ext_resource type="AudioStream" uid="uid://bd1w3mqkiw5sl" path="res://Assets/Audio/SoundEffects/Reload/ShotgunReload/shotgun_reload_success.mp3" id="29_7cxty"]
+[ext_resource type="AudioStream" uid="uid://dw10k5s5fsknr" path="res://Assets/Audio/SoundEffects/Reload/RocketReload/rocket_reload_failure.mp3" id="30_dy84i"]
+[ext_resource type="AudioStream" uid="uid://cr48heccghyn1" path="res://Assets/Audio/SoundEffects/Reload/RocketReload/rocket_reload_success.mp3" id="31_5vpxd"]
+[ext_resource type="AudioStream" uid="uid://bidaiqqnorkgw" path="res://Assets/Audio/SoundEffects/Ending/self_destruct.mp3" id="36_imqay"]
+[ext_resource type="AudioStream" uid="uid://nry4218a72v2" path="res://Assets/Audio/SoundEffects/Dialogue/radio.mp3" id="37_nulc7"]
+[ext_resource type="AudioStream" uid="uid://pjg6m7gbv7wj" path="res://Assets/Audio/SoundEffects/Ending/death.mp3" id="38_nstvi"]
+
+[node name="AudioHandler" type="Node"]
+process_mode = 3
+script = ExtResource("1_1jl8o")
+
+[node name="AudioEvents" type="Node" parent="."]
+script = ExtResource("2_thvkr")
+
+[node name="Choose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o75qf")
+max_polyphony = 3
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y811c")
+volume_db = -6.0
+max_polyphony = 3
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="RandomSFX" type="Node" parent="."]
+script = ExtResource("4_v7fpd")
+
+[node name="Opening01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1m5fh")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+
+[node name="Title" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qlu22")
+volume_db = -3.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+loop_audio = true
+loop_point = 30.72
+
+[node name="Gameplay01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ixr1b")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+loop_audio = true
+
+[node name="OpeningClimax" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_d7tju")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+
+[node name="OpeningIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_4bltd")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+
+[node name="GameplayCombat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_i3nyg")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+loop_audio = true
+loop_point = 7.111
+
+[node name="GameplayDialogue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ldk2n")
+volume_db = -4.0
+bus = &"Music"
+script = ExtResource("3_7sb2v")
+loop_audio = true
+loop_point = 63.998
+
+[node name="MinigunFire" type="Node" parent="."]
+script = ExtResource("4_v7fpd")
+
+[node name="MinigunFire1" type="AudioStreamPlayer" parent="MinigunFire"]
+stream = ExtResource("12_drirt")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="MinigunFire2" type="AudioStreamPlayer" parent="MinigunFire"]
+stream = ExtResource("13_byjgl")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="MinigunFire3" type="AudioStreamPlayer" parent="MinigunFire"]
+stream = ExtResource("14_7c1up")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="MinigunFire4" type="AudioStreamPlayer" parent="MinigunFire"]
+stream = ExtResource("15_mbs0n")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="MinigunFire5" type="AudioStreamPlayer" parent="MinigunFire"]
+stream = ExtResource("16_ept00")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunFire" type="Node" parent="."]
+script = ExtResource("4_v7fpd")
+
+[node name="ShotgunFire1" type="AudioStreamPlayer" parent="ShotgunFire"]
+stream = ExtResource("18_icnnp")
+volume_db = -8.721
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunFire2" type="AudioStreamPlayer" parent="ShotgunFire"]
+stream = ExtResource("19_hjx2e")
+volume_db = -8.721
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunFire3" type="AudioStreamPlayer" parent="ShotgunFire"]
+stream = ExtResource("20_jw2bh")
+volume_db = -8.721
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunFire4" type="AudioStreamPlayer" parent="ShotgunFire"]
+stream = ExtResource("21_6lpas")
+volume_db = -8.721
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunFire5" type="AudioStreamPlayer" parent="ShotgunFire"]
+stream = ExtResource("22_ea5c3")
+volume_db = -8.721
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="WeaponSelect" type="Node" parent="."]
+script = ExtResource("4_v7fpd")
+
+[node name="WeaponSelect1" type="AudioStreamPlayer" parent="WeaponSelect"]
+stream = ExtResource("23_83ubl")
+volume_db = -16.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="WeaponSelect2" type="AudioStreamPlayer" parent="WeaponSelect"]
+stream = ExtResource("24_jhfa5")
+volume_db = -16.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="WeaponSelect3" type="AudioStreamPlayer" parent="WeaponSelect"]
+stream = ExtResource("25_ks54u")
+volume_db = -16.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="RocketFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_68lqm")
+volume_db = -2.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="NoAmmoFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_n7jhm")
+volume_db = -8.622
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="Reload" type="Node" parent="."]
+
+[node name="MinigunReload" type="Node" parent="Reload"]
+
+[node name="MinigunReloadFailure" type="AudioStreamPlayer" parent="Reload/MinigunReload"]
+stream = ExtResource("25_nt0sw")
+volume_db = -12.153
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="MinigunReloadSucces" type="AudioStreamPlayer" parent="Reload/MinigunReload"]
+stream = ExtResource("26_q4eyf")
+volume_db = -7.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunReload" type="Node" parent="Reload"]
+
+[node name="ShotgunReloadGrab" type="AudioStreamPlayer" parent="Reload/ShotgunReload"]
+stream = ExtResource("27_223fo")
+volume_db = -12.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunReloadEngage" type="AudioStreamPlayer" parent="Reload/ShotgunReload"]
+stream = ExtResource("28_vfoss")
+volume_db = -2.315
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="ShotgunReloadSuccess" type="AudioStreamPlayer" parent="Reload/ShotgunReload"]
+stream = ExtResource("29_7cxty")
+volume_db = -15.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="RocketReload" type="Node" parent="Reload"]
+
+[node name="RocketReloadFailure" type="AudioStreamPlayer" parent="Reload/RocketReload"]
+stream = ExtResource("30_dy84i")
+volume_db = -10.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="RocketReloadSuccess" type="AudioStreamPlayer" parent="Reload/RocketReload"]
+stream = ExtResource("31_5vpxd")
+volume_db = -2.505
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="SelfDestruct" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("36_imqay")
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="Radio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_nulc7")
+volume_db = -20.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("38_nstvi")
+volume_db = -6.0
+bus = &"Sound effects"
+script = ExtResource("3_7sb2v")

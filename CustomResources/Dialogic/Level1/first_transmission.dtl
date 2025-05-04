@@ -1,0 +1,33 @@
+do AudioHandler.start_dialogue_music()
+[style name="Cmdr_Style"]
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.0"]
+join cmdr_cloake center [animation="Fade In" length="2.0"]
+join pilot_circe center [animation="Fade In" length="0.2"]
+do GlobalVar.dialogue_play_static_set(true)
+cmdr_cloake: This is Commander Cloake. [n+]Pilot Circe, do you copy?
+pilot_circe: … Copy that, Commander. [n+]I - I’m close to finishing initialisation here in Knight Alpha 01.
+cmdr_cloake: Speak up Pilot! [n]I don’t know why in all the Gates of Hell that Knight Alpha 01 decided a privileged brat like you is worthy of [i]this[/i] seat.[n]But here we are. 200 years after your ancestor last controlled this hunk-a-junk
+pilot_circe (Sad): I- I’m sorry. I didn’t mean to upset-
+cmdr_cloake: Remember your training![n+] The mech is synced completely to your body and mind. If you don’t remain calm, the mech will malfunction.[n]We have hostiles sighted at Gate 01. There is no time for a test drive Pilot…[n]Are you ready?
+pilot_circe (Calm): …
+cmdr_cloake: Pilot… there is no one else whom Knight Alpha 01 will accept to control it. And believe me, we tried. [n]I shouldn’t have to remind you of our words. [i]We are not the first and by our service, we will not be the last.[/i]
+pilot_circe (Sad): I just… I don’t think-
+do AudioHandler.end_dialogue_music()
+do GlobalVar.dialogue_play_static_set(false)
+leave cmdr_cloake
+[background fade="0.0"]
+Must calm progeny of Jason.[n]Mapping audio banks of original pilot to generate protocol selection. Three audio clips from records of Pilot Jason deemed suitable.
+- Hey, ain’t that a beautiful sunset. If today is the day we go, I’m glad it’s with a nice view.
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.SAD)
+	update pilot_circe (Sad)
+- I don’t care how hard things get, we gotta do something! Anything!
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.ANGRY)
+	update pilot_circe (Angry)
+- As long as we’re together, there’s nothing we can’t do
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.HAPPY)
+	update pilot_circe (Happy)
+pilot_circe: What was that? S-Some kind of audio feedback… I think that was Jason.[n]Somehow.
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.0"]
+join cmdr_cloake center [animation="Fade In"]
+do GlobalVar.dialogue_play_static_set(true)
+cmdr_cloake: It’s now or never. Prove me wrong.[n]Simply aim and Knight Alpha will do the rest.

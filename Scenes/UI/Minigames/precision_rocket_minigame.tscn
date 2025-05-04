@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4ndnp866h67u"]
+
+[ext_resource type="Texture2D" uid="uid://if3j4v2le5f6" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeUnder.png" id="1_6f3m4"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/precision_rocket_minigame.gd" id="1_uxihh"]
+[ext_resource type="Texture2D" uid="uid://cl1d2htle2p0d" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeOver.png" id="2_0ou2b"]
+[ext_resource type="Texture2D" uid="uid://vpe68w7bhafw" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeProgress.png" id="3_occnv"]
+[ext_resource type="Texture2D" uid="uid://b353tv7qbcwvk" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/movingCircle.png" id="4_aguec"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/circle.gd" id="5_w5jee"]
+[ext_resource type="Texture2D" uid="uid://gk3mk4q3wtmo" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypePlaceToPress.png" id="6_uvet1"]
+
+
+[node name="PrecisionRocketMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxihh")
+
+[node name="CircleProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 434.0
+offset_bottom = 452.0
+max_value = 360.0
+step = 0.1
+fill_mode = 5
+texture_under = ExtResource("1_6f3m4")
+texture_over = ExtResource("2_0ou2b")
+texture_progress = ExtResource("3_occnv")
+script = ExtResource("5_w5jee")
+
+[node name="Target" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 216.0
+pivot_offset = Vector2(24, 206)
+texture = ExtResource("4_aguec")
+
+[node name="PressLocation" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 216.0
+pivot_offset = Vector2(24, 206)
+texture = ExtResource("6_uvet1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 185.0
+offset_right = 278.0
+offset_bottom = 238.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Press "
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

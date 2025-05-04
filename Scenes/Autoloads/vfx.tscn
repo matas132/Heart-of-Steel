@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://fiwbn0jbecfj"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/vfx.gd" id="1_er6c3"]
+
+[node name="VFX" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_er6c3")
+
+[node name="ScreenColorWhite" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+offset_left = -620.0
+offset_top = -329.0
+offset_right = 1972.0
+offset_bottom = 1255.0
+mouse_filter = 2
+
+[node name="ScreenColor" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+offset_left = -620.0
+offset_top = -329.0
+offset_right = 1972.0
+offset_bottom = 1255.0
+mouse_filter = 2
+
+[node name="MouseInputPrevention" type="ColorRect" parent="."]
+offset_left = -342.0
+offset_top = -185.0
+offset_right = 1582.0
+offset_bottom = 874.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

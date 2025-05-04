@@ -1,0 +1,25 @@
+[style name="test_style"]
+do AudioHandler.opening_intro.play()
+For many years there was only silence.
+But before the silence… there was a song. 
+The Song of Steel. 
+You were Knight Alpha. The first. There were Three of You. One for each Gate of the Enemy.
+The sound of Your steel against Your Enemies sang each day. 
+All to protect the Last City. Omega. 
+Your conductor was Jason. You moved in harmony under his direction.
+Together You held back the Enemy. 
+do AudioHandler.lerp_to_specific_volume(AudioHandler.opening_intro, 0.001, 0.5)
+[wait time="1.5"]
+do AudioHandler.opening_climax.play()
+But now, the Enemy has returned. 
+The gas chamber coolants have oxidised. 
+The charging protocols have been overridden. 
+And the emergency overclocking has been authorised.
+Jason is no more. 
+Instead the progeny of Jason sits at your controls.
+Your weapons have changed and so has the Enemy. 
+Before there were Three of you. Now there is just One. You. But still there are Three Gates.
+Omega needs You once more.
+The silence has ended.
+do AudioHandler.lerp_to_specific_volume(AudioHandler.opening_climax, 0.001, 4)
+[wait time="4.0"]

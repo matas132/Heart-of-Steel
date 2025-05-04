@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1xetuvlgpv3a"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Menus/Pause/pause_menu.gd" id="1_i1nbr"]
+[ext_resource type="Script" path="res://Scenes/UI/Menus/Buttons/button_with_sound.gd" id="1_nvoua"]
+
+[sub_resource type="Gradient" id="Gradient_0s1oh"]
+colors = PackedColorArray(0, 0, 0, 1, 0.552941, 0.45098, 0.278431, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ioc7n"]
+gradient = SubResource("Gradient_0s1oh")
+width = 400
+height = 500
+fill_to = Vector2(0, 1)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1nbr")
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.745098)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("GradientTexture2D_ioc7n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
+custom_minimum_size = Vector2(330, 450)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 25.0
+offset_right = -35.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 17
+
+[node name="Control" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controls" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls"
+script = ExtResource("1_nvoua")
+
+[node name="AudioSettings" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Audio settings"
+script = ExtResource("1_nvoua")
+
+[node name="ExitPausedMenu" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back to game"
+script = ExtResource("1_nvoua")
+
+[node name="ToTitle" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "To title"
+script = ExtResource("1_nvoua")

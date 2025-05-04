@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl07eq2plpdaw"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/laser_shotgun_minigame.gd" id="1_7tmvw"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/texture_progress_bar.gd" id="2_atggn"]
+
+[sub_resource type="Gradient" id="Gradient_157g2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfj8x"]
+gradient = SubResource("Gradient_157g2")
+
+[sub_resource type="Gradient" id="Gradient_m0efs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.513726, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6j20g"]
+gradient = SubResource("Gradient_m0efs")
+
+[node name="LaserShotgunMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = -1159.0
+offset_bottom = -461.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_7tmvw")
+
+[node name="HoldButton" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 196.0
+offset_right = 87.0
+offset_bottom = 241.0
+
+[node name="ColorRect" type="ColorRect" parent="HoldButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HoldButton"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 49.0
+offset_bottom = 32.0
+text = "Hold"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 18.0
+offset_right = 80.0
+offset_bottom = 193.0
+step = 0.1
+value = 30.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nfj8x")
+texture_progress = SubResource("GradientTexture1D_6j20g")
+script = ExtResource("2_atggn")
+
+[node name="MeterChargeRate" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+
+[connection signal="mouse_entered" from="HoldButton" to="." method="_on_hold_button_mouse_entered"]
+[connection signal="mouse_exited" from="HoldButton" to="." method="_on_hold_button_mouse_exited"]
+[connection signal="timeout" from="MeterChargeRate" to="." method="_on_meter_charge_rate_timeout"]

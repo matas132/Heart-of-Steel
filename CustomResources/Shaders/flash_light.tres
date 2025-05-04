@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cs2xuk8d5w7y6"]
+
+[ext_resource type="Shader" path="res://Scenes/Levels/flash_light.gdshader" id="1_gouxq"]
+
+[resource]
+shader = ExtResource("1_gouxq")

@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc8pudg47asul"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/precision_rocket_minigame_ball_fall_down.gd" id="1_yetsv"]
+[ext_resource type="Texture2D" uid="uid://if3j4v2le5f6" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeUnder.png" id="2_ew3vh"]
+[ext_resource type="Texture2D" uid="uid://cl1d2htle2p0d" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeOver.png" id="3_hwcp3"]
+[ext_resource type="Texture2D" uid="uid://vpe68w7bhafw" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypeProgress.png" id="4_hkqdh"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/circle.gd" id="5_ic3qn"]
+[ext_resource type="Texture2D" uid="uid://b353tv7qbcwvk" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/movingCircle.png" id="6_cqo1p"]
+[ext_resource type="Texture2D" uid="uid://cflmrhe2rynpo" path="res://Assets/Sprites/HUD/HUDElements/Ball_Minigame3.png" id="7_2ywmn"]
+[ext_resource type="Texture2D" uid="uid://gk3mk4q3wtmo" path="res://Assets/Sprites/HUD/Player/Minigames/PrecisionRocket/circlePrototypePlaceToPress.png" id="7_6tfih"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ecun"]
+
+[node name="PrecisionRocketMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yetsv")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 201.0
+offset_top = 10.0
+offset_right = 236.0
+offset_bottom = 44.0
+
+[node name="CircleProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 434.0
+offset_bottom = 452.0
+max_value = 360.0
+step = 0.1
+fill_mode = 5
+texture_under = ExtResource("2_ew3vh")
+texture_over = ExtResource("3_hwcp3")
+texture_progress = ExtResource("4_hkqdh")
+script = ExtResource("5_ic3qn")
+
+[node name="TargetNotUsed" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 195.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 216.0
+pivot_offset = Vector2(24, 206)
+texture = ExtResource("6_cqo1p")
+
+[node name="Target" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 47.0
+offset_right = 230.0
+offset_bottom = 71.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(14, 192)
+texture = ExtResource("7_2ywmn")
+
+[node name="PressLocation" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 195.0
+offset_top = 2.0
+offset_right = 243.0
+offset_bottom = 216.0
+pivot_offset = Vector2(24, 206)
+texture = ExtResource("7_6tfih")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 147.0
+offset_right = 282.0
+offset_bottom = 279.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8ecun")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ecun")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 294.0
+offset_top = 355.0
+offset_right = 387.0
+offset_bottom = 395.0
+rotation = -0.757913
+color = Color(0, 0.611765, 0, 0.6)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,28 @@
+do AudioHandler.start_dialogue_music()
+[style name="Cmdr_Style"]
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.0"]
+join cmdr_cloake center [animation="Fade In"]
+join pilot_circe center [animation="Instant In" length="0.0"]
+do GlobalVar.dialogue_play_static_set(true)
+cmdr_cloake: Your resilience is surprising. Perhaps-[n] No, it is foolish to even say it aloud.[n] This is it, Pilot.[n] The final wave.[n] The Atlas Class enemies have come through Gate 03.[n] Only Knight Alpha’s Balor Torpedo Cannon has a chance of piercing their hides.[n] Good luck.
+leave cmdr_cloake
+[background fade="0.0"]
+[wait time="0.4"]
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.0"]
+join cmdr_cloake center [animation="Fade In"]
+cmdr_cloake: One last thing. You’ve proved yourself a loyal servant of Omega, Pilot. You’ve made your city proud.
+do AudioHandler.end_dialogue_music()
+do GlobalVar.dialogue_play_static_set(false)
+leave cmdr_cloake
+[background fade="0.0"]
+pilot_circe (Happy): The final wave.[n]I’ve only heard of Atlas Class Devils in stories.[n]And Commander Cloake actually said something nice to me.[n]Why do I feel happy right now?[n]Maybe, it’s because I know I’m not alone.[n]Right, Knight Alpha?
+Pilot has requested verbal response. Pulling appropriate data files.
+- Sometimes I’m jealous of everyone back home, that if I fail they get to die with their loved ones. But then I remember I’ve got you Al. I don’t even know if you can hear me but you’ve been with me through thick and thin buddy. How about one last ride eh?
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.SAD)
+	update pilot_circe (Sad)
+- One of them got us bad yesterday. And I felt so mad that they had hurt you, had hurt me. The more I pilot the more I realise we’re two sides of the same coin you and me Al. I’m not going to let them hurt us again.
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.ANGRY)
+	update pilot_circe (Angry)
+- I’m so happy knowing my kid has someone like you to look after them, Al. You’ll always be there, no matter what.
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.HAPPY)
+	update pilot_circe (Happy)

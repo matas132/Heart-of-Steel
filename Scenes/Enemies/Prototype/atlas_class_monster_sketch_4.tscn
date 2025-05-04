@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://xtmxn5c8faev"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Prototype/atlas_class_monster_sketch_4.gd" id="1_ocnum"]
+[ext_resource type="Texture2D" uid="uid://c40u0ykshek2v" path="res://Assets/Sprites/Enemies/AtlasClassMonsterSketch4NoHands.png" id="1_vv2v6"]
+[ext_resource type="Shader" path="res://Scenes/Enemies/Prototype/sway_shader.gdshader" id="2_tfn03"]
+[ext_resource type="Texture2D" uid="uid://dsb1hfwbkh4kv" path="res://Assets/Sprites/Enemies/AtlasClassMonsterSketch4LeftHand.png" id="2_thvhy"]
+[ext_resource type="Texture2D" uid="uid://bflcsca1emxv2" path="res://Assets/Sprites/Enemies/AtlasClassMonsterSketch4RightHand.png" id="3_g0j07"]
+[ext_resource type="Shader" path="res://Scenes/Enemies/Prototype/sway_shader_2.gdshader" id="4_4w8a1"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="6_oub4h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y0ais"]
+shader = ExtResource("2_tfn03")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1oqvd"]
+shader = ExtResource("4_4w8a1")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0gku"]
+radius = 45.0
+height = 238.0
+
+[sub_resource type="Animation" id="Animation_c2vre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xawyh"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.01), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqf4i"]
+_data = {
+"RESET": SubResource("Animation_c2vre"),
+"idle": SubResource("Animation_xawyh")
+}
+
+[node name="AtlasClassMonsterSketch4" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_ocnum")
+type = 2
+enemy = 3
+max_health = 70.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-2, 2)
+
+[node name="Body" type="TextureRect" parent="Node2D"]
+offset_left = -129.0
+offset_top = -116.0
+offset_right = 1577.0
+offset_bottom = 1761.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_vv2v6")
+
+[node name="LeftHand" type="TextureRect" parent="Node2D/Body"]
+material = SubResource("ShaderMaterial_y0ais")
+layout_mode = 0
+offset_left = 864.0
+offset_top = 620.0
+offset_right = 1166.0
+offset_bottom = 1040.0
+texture = ExtResource("2_thvhy")
+
+[node name="RightHand" type="TextureRect" parent="Node2D/Body"]
+material = SubResource("ShaderMaterial_1oqvd")
+layout_mode = 0
+offset_left = 92.0
+offset_top = 532.0
+offset_right = 505.0
+offset_bottom = 1085.0
+texture = ExtResource("3_g0j07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 33)
+shape = SubResource("CapsuleShape2D_e0gku")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hqf4i")
+}
+autoplay = "idle"
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(1, 1)
+
+[node name="HealthBar" parent="." instance=ExtResource("6_oub4h")]
+offset_left = -95.0
+offset_top = -142.0
+offset_right = 107.0
+offset_bottom = -119.0
+
+[node name="AttackTimer" type="Timer" parent="."]

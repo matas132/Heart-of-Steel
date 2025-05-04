@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=13 format=3 uid="uid://c8dy0ewxhl44q"]
+
+[ext_resource type="Resource" uid="uid://b1vjeooyv45sp" path="res://Scenes/UI/DialogicStyles/Cmdr_Style.tres" id="1_wq2qe"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_foib4"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="3_ajvvq"]
+
+[sub_resource type="Resource" id="Resource_q2dff"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_woaqu"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_0du31"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_2wqav"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_url6y"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_676c6"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_bkx5t"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_dl7ty"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_gu63g"]
+script = ExtResource("2_foib4")
+overrides = {}
+
+[resource]
+script = ExtResource("3_ajvvq")
+name = "pilot_circe_style"
+inherits = ExtResource("1_wq2qe")
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_q2dff"),
+"10": SubResource("Resource_woaqu"),
+"11": SubResource("Resource_0du31"),
+"12": SubResource("Resource_2wqav"),
+"13": SubResource("Resource_url6y"),
+"14": SubResource("Resource_676c6"),
+"15": SubResource("Resource_bkx5t"),
+"16": SubResource("Resource_dl7ty"),
+"17": SubResource("Resource_gu63g")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_foib4")]([])
+metadata/_latest_layer = "11"

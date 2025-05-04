@@ -1,0 +1,28 @@
+do AudioHandler.start_dialogue_music()
+[style name="Cmdr_Style"]
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.5"]
+join cmdr_cloake center [animation="Fade In"]
+join pilot_circe center [animation="Instant In" length="0.0"]
+do GlobalVar.dialogue_play_static_set(true)
+cmdr_cloake: Performance review\:[n]Satisfactory.[n]In fact you exceeded expectations by not fleeing the field of battle.
+pilot_circe (Angry): Why do you-
+cmdr_cloake: Why do I ‘what’, Pilot?
+pilot_circe (Sad): N-Nothing.
+cmdr_cloake: Your obedience would be admirable were it not an act of surrender.[n]Enough, the next wave of enemies approaches from Gate 02.[n]We expect some of the less predictable Devils will show themselves.[n]Hopefully, Knight Alpha’s targeting algorithm can select the right weapon for the right enemy.[n]You just need to line them up.
+pilot_circe: Yes, Commander.
+do AudioHandler.end_dialogue_music()
+do GlobalVar.dialogue_play_static_set(false)
+leave cmdr_cloake
+[background fade="0.0"]
+pilot_circe (Sad): All my life I’ve not been good enough.[n+] Ran away when things got tough. Please, please let this be the [i]one[/i] thing I can do.
+Progeny of Jason appears downcast. Pilots show a 13% decrease in efficiency rate relative to negative emotional state.[n+] Scouring audio banks for additional suitable files.
+- Everytime I say goodbye to my kid, I wonder if it will be the last time you know? But that’s why I do all this. For him, for everyone back home.
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.SAD)
+	update pilot_circe (Sad)
+- There’s no turning back now. We’re sending these freaks straight back to hell!
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.ANGRY)
+	update pilot_circe (Angry)
+- Sometimes I wish it wasn’t me you know, Al… I don’t know how much more I’ve got left in me. But I’ve got to keep trying. Because if I don’t, who will?
+	do GlobalVar.set_emotion(GlobalVar.emotion_type.HAPPY)
+	update pilot_circe (Happy)
+pilot_circe: It happened again. Like Jason is talking to me. Or maybe, Knight Alpha can hear me?

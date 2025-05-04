@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://0q0sy6suerbq"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/speedometer_minigame.gd" id="1_r04qc"]
+[ext_resource type="Texture2D" uid="uid://ca32l8c3d8cat" path="res://Assets/Sprites/HUD/HUDElements/Speedometer.png" id="2_mmhgy"]
+[ext_resource type="Texture2D" uid="uid://b2opnlqffb82" path="res://Assets/Sprites/HUD/HUDElements/button.png" id="3_nrwtc"]
+[ext_resource type="Texture2D" uid="uid://cfdler3632e8l" path="res://Assets/Sprites/HUD/HUDElements/SpeedometerFrame_Minigame1.png" id="3_ujj7s"]
+
+[sub_resource type="Gradient" id="Gradient_6hfa8"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hjttl"]
+gradient = SubResource("Gradient_6hfa8")
+width = 10
+
+[sub_resource type="Gradient" id="Gradient_3cxve"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m0ugq"]
+gradient = SubResource("Gradient_3cxve")
+width = 4
+
+[sub_resource type="Gradient" id="Gradient_05vp4"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_afbqg"]
+gradient = SubResource("Gradient_05vp4")
+
+[node name="Speedometer_minigame" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -174.0
+offset_top = 146.0
+offset_right = -174.0
+offset_bottom = 146.0
+grow_horizontal = 0
+scale = Vector2(0.68, 0.68)
+script = ExtResource("1_r04qc")
+
+[node name="Speedometer" type="Sprite2D" parent="."]
+texture = ExtResource("2_mmhgy")
+
+[node name="PLAY" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = -92.0
+offset_top = 110.0
+offset_right = 99.0
+offset_bottom = 170.0
+focus_mode = 0
+texture_normal = ExtResource("3_nrwtc")
+stretch_mode = 0
+
+[node name="Greenzone" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5.00012, 78)
+rotation = 3.14159
+scale = Vector2(-1.335, -149.19)
+texture = SubResource("GradientTexture1D_hjttl")
+centered = false
+
+[node name="Needle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-2.00001, 76)
+rotation = -1.5708
+scale = Vector2(-0.595036, -141.328)
+texture = SubResource("GradientTexture1D_m0ugq")
+centered = false
+
+[node name="Feedback" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -20.0
+offset_top = -116.0
+offset_right = 20.0
+offset_bottom = -93.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Failed"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BottomBorder" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.50003, 79.375)
+scale = Vector2(1.21484, 9.24997)
+texture = SubResource("GradientTexture1D_afbqg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2.5)
+scale = Vector2(1, 1.02232)
+texture = ExtResource("3_ujj7s")
+
+[connection signal="pressed" from="PLAY" to="." method="_on_play_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

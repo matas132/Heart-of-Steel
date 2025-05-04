@@ -1,0 +1,26 @@
+do AudioHandler.start_dialogue_music()
+[style name="Cmdr_Style"]
+[background arg="res://Assets/Sprites/HUD/Dialogue/Commander_Background.png" fade="0.0"]
+join cmdr_cloake center [animation="Fade In"]
+join pilot_circe center [animation="Instant In" length="0.0"]
+do GlobalVar.dialogue_play_static_set(true)
+cmdr_cloake: I don’t have much time, Pilot.[n] None of us do.[n] Devils are now pouring through from all Gates.[n] Omega will soon be overrun.[n] There is a way to stop them.[n] But… it requires a great sacrifice.
+pilot_circe: Just tell me, Commander. I’m ready.
+cmdr_cloake: Very well.[n+] There is a brief window where you could overload Knight Alpha’s laser reload chargers.[n]This would signal a self destruction protocol, causing the Knight’s reactor to explode. We believe an explosion of this degree may destroy the Gates themselves.
+pilot_circe: You’re saying it might work?
+cmdr_cloake: This is unknown territory. The science used to build Knight Alpha is beyond us. This is our one shot. There are simply too many of them. Even Knight Alpha will be overrun.[n]What do you say, Pilot? Do you accept this mission?
+pilot_circe: Mission accepted, Commander.
+cmdr_cloake: Circe… you’re sure?
+pilot_circe: [i]I am not the first. And by my service, I will not be the last.[/i]
+do AudioHandler.end_dialogue_music()
+do GlobalVar.dialogue_play_static_set(false)
+leave cmdr_cloake
+[background fade="0.0"]
+pilot_circe: I’m sorry, Knight Alpha.
+No suitable audio found for response.
+pilot_circe: I’m glad I got to know you. No one should die alone.
+No suitable audio found for response. Run search again.
+pilot_circe (Sad): Goodbye.
+do GlobalVar.set_emotion(GlobalVar.emotion_type.SAD)
+One suitable audio recording was discovered. Commencing playback.
+Ouch![n+] Banging my head on the screen, what an introduction.[n+] I’m Jason.[n+] It’s an honour to be your pilot, Knight Alpha.[n+] Can I call you Al?

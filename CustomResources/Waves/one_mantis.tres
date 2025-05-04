@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WaveResource" load_steps=4 format=3 uid="uid://5v8e3xaubqpl"]
+
+[ext_resource type="Script" path="res://CustomResources/Waves/Enemy/enemy.gd" id="1_65fid"]
+[ext_resource type="Script" path="res://CustomResources/Waves/Wave.gd" id="2_bbtxe"]
+
+[sub_resource type="Resource" id="Resource_aflg4"]
+script = ExtResource("1_65fid")
+enemy = 6
+weight = 1
+
+[resource]
+script = ExtResource("2_bbtxe")
+wave_time = 7.5
+enemy_spawn_time = 4.0
+enemies = Array[ExtResource("1_65fid")]([SubResource("Resource_aflg4")])

@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhovpqvaaxdts"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/base_enemy.gd" id="1_awqyk"]
+[ext_resource type="Texture2D" uid="uid://bww2bkonemrch" path="res://Assets/Sprites/Enemies/NonPrototype/Spider.png" id="2_uwwhp"]
+[ext_resource type="PackedScene" uid="uid://dtng6objwar3c" path="res://Scenes/Components/health_bar.tscn" id="3_3lx7k"]
+
+[sub_resource type="Animation" id="Animation_f5pdt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lm3gb"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.56667, 3.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.015), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2ekv"]
+_data = {
+"RESET": SubResource("Animation_f5pdt"),
+"new_animation": SubResource("Animation_lm3gb")
+}
+
+[node name="Spider" type="Area2D" groups=["Enemy"]]
+y_sort_enabled = true
+scale = Vector2(0.67, 0.67)
+script = ExtResource("1_awqyk")
+enemy = 7
+max_health = 15.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-108.507, -164.179)
+polygon = PackedVector2Array(83.5821, 29.8507, 101.493, 13.4328, 128.358, 13.4328, 144.776, 25.3731, 152.239, 52.2388, 156.716, 47.7612, 170.149, 64.1791, 179.104, 58.209, 211.94, 134.328, 205.97, 141.791, 182.09, 73.1343, 174.627, 73.1343, 188.06, 122.388, 183.582, 126.866, 171.642, 83.5821, 155.224, 114.925, 114.925, 113.433, 86.5672, 117.91, 59.7015, 98.5075, 49.2537, 129.851, 32.8358, 110.448, 20.8955, 150.746, 16.4179, 98.5075, 47.7612, 59.7015, 59.7015, 62.6866, 71.6418, 47.7612, 80.597, 53.7313)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_left = -108.507
+offset_top = -164.179
+offset_right = 117.493
+offset_bottom = -2.17911
+texture = ExtResource("2_uwwhp")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_3lx7k")]
+offset_left = -42.0
+offset_top = -193.0
+offset_right = 59.0
+offset_bottom = -178.0
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(7.46269, -131.343)
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j2ekv")
+}
+autoplay = "new_animation"

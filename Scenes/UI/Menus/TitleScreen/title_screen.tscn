@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://4twbdn06w2a8"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Menus/Buttons/button_with_sound.gd" id="1_5dcr4"]
+[ext_resource type="Texture2D" uid="uid://dvjr3wpgsvwxl" path="res://Assets/Sprites/TITLE_SCREEN/menu_2.png" id="1_wvwmm"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wvwmm")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 258.0
+offset_right = -903.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(310, 107)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+script = ExtResource("1_5dcr4")
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(310, 107)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+script = ExtResource("1_5dcr4")
+
+[node name="About" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "About"
+script = ExtResource("1_5dcr4")
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(310, 107)
+layout_mode = 2
+size_flags_horizontal = 4
+flat = true
+script = ExtResource("1_5dcr4")

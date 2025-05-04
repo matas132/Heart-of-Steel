@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6uhxulyhvwww"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/laser_shotgun_minigame_dial.gd" id="1_s8014"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/texture_progress_bar.gd" id="2_wgfse"]
+[ext_resource type="Texture2D" uid="uid://b53gieuu3hwum" path="res://Assets/Sprites/HUD/HUDElements/Tab_Minigame2.png" id="3_jrtxe"]
+[ext_resource type="Script" path="res://Scenes/UI/Minigames/v_scroll_bar.gd" id="4_ubvru"]
+
+[sub_resource type="Gradient" id="Gradient_157g2"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nfj8x"]
+gradient = SubResource("Gradient_157g2")
+
+[sub_resource type="Gradient" id="Gradient_m0efs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.513726, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6j20g"]
+gradient = SubResource("Gradient_m0efs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5c7e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7g4mt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3eblq"]
+texture = ExtResource("3_jrtxe")
+texture_margin_top = 64.0
+
+[node name="LaserShotgunMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 2.0
+offset_right = -1148.0
+offset_bottom = -458.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.689, 0.689)
+mouse_filter = 1
+script = ExtResource("1_s8014")
+
+[node name="HoldButton" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 196.0
+offset_right = 87.0
+offset_bottom = 241.0
+
+[node name="ColorRect" type="ColorRect" parent="HoldButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HoldButton"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 49.0
+offset_bottom = 32.0
+text = "Hold"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 147.0
+offset_bottom = 179.0
+step = 0.1
+value = 30.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_nfj8x")
+texture_progress = SubResource("GradientTexture1D_6j20g")
+script = ExtResource("2_wgfse")
+
+[node name="MeterChargeRate" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.1
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -6.0
+offset_right = 80.0
+offset_bottom = 261.0
+theme_override_styles/scroll = SubResource("StyleBoxEmpty_h5c7e")
+theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_7g4mt")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_3eblq")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_3eblq")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_3eblq")
+value = 100.0
+script = ExtResource("4_ubvru")
+
+[node name="Timer" type="Timer" parent="VScrollBar"]
+wait_time = 0.4
+
+[connection signal="mouse_entered" from="HoldButton" to="." method="_on_hold_button_mouse_entered"]
+[connection signal="mouse_exited" from="HoldButton" to="." method="_on_hold_button_mouse_exited"]
+[connection signal="timeout" from="MeterChargeRate" to="." method="_on_meter_charge_rate_timeout"]
+[connection signal="scrolling" from="VScrollBar" to="VScrollBar" method="_on_scrolling"]
+[connection signal="value_changed" from="VScrollBar" to="." method="_on_v_scroll_bar_value_changed"]
+[connection signal="timeout" from="VScrollBar/Timer" to="VScrollBar" method="_on_timer_timeout"]
